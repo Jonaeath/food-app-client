@@ -1,8 +1,13 @@
+import Home from "./Pages/Home/Home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 function App() {
   return (
-    <div>
-      <button className="btn btn-primary">Primary</button>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 
