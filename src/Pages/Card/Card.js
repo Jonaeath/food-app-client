@@ -28,7 +28,7 @@ const Card = () => {
             <option value="half">Half</option>
             <option value="full">Full</option>
           </select>
-          <div className="inline-block h-100">Total Price</div>
+          <div className="m-2 h-100">Total Price</div>
         </div>
         <div className="card-actions justify-end">
           <button className="btn btn-primary">Buy Now</button>
