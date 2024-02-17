@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   const [createUser, setCreateUser] = useState({
-    name: "",
     email: "",
     password: "",
-    location: "",
   });
 
   const [error, setError] = useState(null);
@@ -43,20 +41,7 @@ const Login = () => {
     <div className="flex justify-center items-center h-screen">
       <div className="card w-full md:w-96 shadow-2xl bg-base-100 py-10 px-8">
         <form onSubmit={handelSubmit}>
-          <h1 className="text-4xl text-center font-bold mb-8">Sign Up!</h1>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Name</span>
-            </label>
-            <input
-              type="text"
-              name="name"
-              placeholder="name"
-              className="input input-bordered"
-              value={createUser.name}
-              onChange={onChange}
-            />
-          </div>
+          <h1 className="text-4xl text-center font-bold mb-8">Log In!</h1>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -91,19 +76,6 @@ const Login = () => {
               </Link>
             </label>
           </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Location</span>
-            </label>
-            <input
-              type="text"
-              name="location"
-              placeholder="location"
-              className="input input-bordered"
-              value={createUser.location}
-              onChange={onChange}
-            />
-          </div>
           <div className="form-control mt-6">
             <input
               className="btn btn-primary w-full"
@@ -114,9 +86,9 @@ const Login = () => {
           {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
         </form>
         <p className="text-center mt-4">
-          Already Signed Up?
+          Please Register Here?
           <Link className="text-orange-600 font-bold ml-1" to="/login">
-            Login
+            Sign Up
           </Link>
         </p>
       </div>
