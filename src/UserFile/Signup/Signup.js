@@ -23,7 +23,8 @@ const Signup = () => {
       const json = await response.json();
       console.log(json);
       if (!json.success) {
-        setError(json.message || "Signup failed");
+        // setError(json.message || "Signup failed");
+        alert("Enter Valid Character");
       } else {
         // Signup successful, handle accordingly (redirect or show success message)
       }
