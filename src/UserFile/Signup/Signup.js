@@ -105,7 +105,7 @@ const Signup = () => {
           </div>
           <div className="form-control mt-6">
             <input
-              className="btn btn-primary w-full"
+              className="btn btn-primary w-full uppercase"
               type="submit"
               value="Sign Up"
             />

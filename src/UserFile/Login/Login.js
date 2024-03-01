@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [createUser, setCreateUser] = useState({
     email: "",
     password: "",
@@ -12,7 +13,7 @@ const Login = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:4000/api/createuser", {
+      const response = await fetch("http://localhost:4000/api/userlogin", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -27,6 +28,7 @@ const Login = () => {
       } else {
         // Signup successful, handle accordingly (redirect or show success message)
       }
+      navigate("/");
     } catch (error) {
       setError("An error occurred, please try again later");
       console.error("Signup error:", error);
@@ -78,16 +80,16 @@ const Login = () => {
           </div>
           <div className="form-control mt-6">
             <input
-              className="btn btn-primary w-full"
+              className="btn btn-primary w-full uppercase"
               type="submit"
-              value="Sign Up"
+              value="Log in"
             />
           </div>
-          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+          <p className="text-red-500 text-sm mt-2"></p>
         </form>
         <p className="text-center mt-4">
           Please Register Here?
-          <Link className="text-orange-600 font-bold ml-1" to="/login">
+          <Link className="text-orange-600 font-bold ml-1" to="/createuser">
             Sign Up
           </Link>
         </p>

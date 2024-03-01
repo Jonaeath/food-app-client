@@ -1,0 +1,12 @@
+.hbd-banner-bg {
+  /* height: 60vh; */
+  overflow: hidden;
+  background-color: #dafff0;
+  background-image: url("../../image/bg-1.jpg");
+}
+
+@media (min-width: 1080px) {
+  .hbd-banner-bg {
+    height: 60vh;
+  }
+}
