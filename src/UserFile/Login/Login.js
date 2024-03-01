@@ -20,18 +20,18 @@ const Login = () => {
         },
         body: JSON.stringify(createUser),
       });
-      const json = await response.json();
-      console.log(json);
-      if (!json.success) {
-        // setError(json.message || "Signup failed");
-        alert("Enter Valid Character");
+      const data = await response.json();
+      console.log(data);
+      if (response.ok) {
+        // If login successful, save token and navigate to home
+        localStorage.setItem("token", data.token); // Save token in localStorage
+        navigate("/"); // Redirect to home page
       } else {
-        // Signup successful, handle accordingly (redirect or show success message)
+        setError(data.error || "Login failed");
       }
-      navigate("/");
     } catch (error) {
+      console.error("Login error:", error);
       setError("An error occurred, please try again later");
-      console.error("Signup error:", error);
     }
   };
 

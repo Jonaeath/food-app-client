@@ -6,12 +6,17 @@ import food from "../../image/food.png";
 
 const Home = () => {
   const [foodData, setFoodData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:4000/api/foodCollection")
       .then((res) => res.json())
       .then((data) => setFoodData(data));
   }, []);
+
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
 
   return (
     <div>
@@ -23,7 +28,9 @@ const Home = () => {
         btn="Search"
         placeholder="Search"
         animation="mx-auto sm:w-2/3 md:w-2/3 lg:w-1/2 animate-spin-slow"
+        onSearch={handleSearch}
       />
+
       <div>
         {foodData?.allFoodCategory && foodData.allFoodCategory.length > 0 ? (
           foodData.allFoodCategory.map((category) => (
@@ -31,7 +38,12 @@ const Home = () => {
               <h2>{category.CategoryName}</h2>
               {foodData.allFoodsData
                 .filter(
-                  (foodItem) => foodItem.CategoryName === category.CategoryName
+                  (foodItem) =>
+                    foodItem.CategoryName === category.CategoryName &&
+                    (searchTerm === "" ||
+                      foodItem.name
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase()))
                 )
                 .map((filteredItem) => (
                   <Card

@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Banner.css";
 
-const Banner = ({ img, title, sub, btn, placeholder, animation }) => {
+const Banner = ({ img, title, sub, btn, placeholder, animation, onSearch }) => {
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+
+  const handleSearch = () => {
+    onSearch(searchValue);
+  };
+
   return (
     <div className="m-4 hbd-banner-bg rounded-lg flex-none md:flex justify-between items-center md:px-6 px-1">
       <div>
@@ -12,8 +22,13 @@ const Banner = ({ img, title, sub, btn, placeholder, animation }) => {
             className="rounded-full py-3 px-6 focus:outline-none focus:border-transparent"
             type="text"
             placeholder={placeholder}
+            value={searchValue}
+            onChange={handleSearchChange}
           />
-          <button className="bg-green-400 text-white rounded-full py-3 md:px-6 px-2 transition duration-500 ease-in-out transform hover:scale-110 ">
+          <button
+            className="bg-green-400 text-white rounded-full py-3 md:px-6 px-2 transition duration-500 ease-in-out transform hover:scale-110 "
+            onClick={handleSearch}
+          >
             {btn}
           </button>
         </div>

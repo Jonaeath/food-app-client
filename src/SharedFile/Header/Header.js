@@ -1,18 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function componentName() {
+const Header = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+
+    navigate("/");
+  };
+  // console.log("Token:", localStorage.getItem("token"));
+
   const tabmenu = (
     <>
       <li>
         <Link to="/">Home</Link>
       </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-      <li>
-        <Link>Item 1</Link>
-      </li>
+      {localStorage.getItem("token") ? (
+        <li>
+          <Link to="/myorder">My Orders</Link>
+        </li>
+      ) : (
+        ""
+      )}
     </>
   );
 
@@ -50,11 +60,27 @@ function componentName() {
           <ul className="menu menu-horizontal px-1">{tabmenu}</ul>
         </div>
         <div className="navbar-end">
-          <Link className="btn">Button</Link>
+          {!localStorage.getItem("token") ? (
+            <div className="d-flex">
+              <Link className="btn bg-white text-success mx-1 " to="/login">
+                Login
+              </Link>
+              <Link className="btn bg-white text-success mx-1" to="/createuser">
+                Signup
+              </Link>
+            </div>
+          ) : (
+            <button
+              onClick={handleLogout}
+              className="btn bg-white text-success"
+            >
+              Logout
+            </button>
+          )}
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default componentName;
+export default Header;

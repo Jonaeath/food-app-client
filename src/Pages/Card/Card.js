@@ -8,7 +8,11 @@ const Card = (props) => {
     <div>
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
-          <img src={props.image} alt="Shoes" />
+          <img
+            src={props.image}
+            alt="food"
+            style={{ height: "120px", objectFit: "fill" }}
+          />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{props.foodName}</h2>
