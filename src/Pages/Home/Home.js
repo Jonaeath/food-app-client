@@ -31,28 +31,32 @@ const Home = () => {
         onSearch={handleSearch}
       />
 
-      <div>
+      <div className="container m-4">
         {foodData?.allFoodCategory && foodData.allFoodCategory.length > 0 ? (
           foodData.allFoodCategory.map((category) => (
             <div key={category._id}>
-              <h2>{category.CategoryName}</h2>
-              {foodData.allFoodsData
-                .filter(
-                  (foodItem) =>
-                    foodItem.CategoryName === category.CategoryName &&
-                    (searchTerm === "" ||
-                      foodItem.name
-                        .toLowerCase()
-                        .includes(searchTerm.toLowerCase()))
-                )
-                .map((filteredItem) => (
-                  <Card
-                    key={filteredItem._id}
-                    foodName={filteredItem.name}
-                    image={filteredItem.img}
-                    options={filteredItem.options[0]}
-                  />
-                ))}
+              <h2 className="text-2xl text-bold mt-6 mb-4 text-accent uppercase">
+                ----------- {category.CategoryName} ------------
+              </h2>
+              <hr />
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mt-4">
+                {foodData.allFoodsData
+                  .filter(
+                    (foodItem) =>
+                      foodItem.CategoryName === category.CategoryName &&
+                      (searchTerm === "" ||
+                        foodItem.name
+                          .toLowerCase()
+                          .includes(searchTerm.toLowerCase()))
+                  )
+                  .map((filteredItem) => (
+                    <Card
+                      key={filteredItem._id}
+                      foodDetails={filteredItem}
+                      options={filteredItem.options[0]}
+                    />
+                  ))}
+              </div>
             </div>
           ))
         ) : (

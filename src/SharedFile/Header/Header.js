@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Header = () => {
       </li>
       {localStorage.getItem("token") ? (
         <li>
-          <Link to="/myorder">My Orders</Link>
+          <Link to="/myOrder">My Orders</Link>
         </li>
       ) : (
         ""
@@ -28,7 +29,7 @@ const Header = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-green-400">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -70,12 +71,21 @@ const Header = () => {
               </Link>
             </div>
           ) : (
-            <button
-              onClick={handleLogout}
-              className="btn bg-white text-success"
-            >
-              Logout
-            </button>
+            <div className="flex">
+              <div className="flex m-2">
+                <h3 className="mr-2 text-xl font-bold text-blue-500">Cart</h3>
+                <FaShoppingCart className="mt-2 mr-1"></FaShoppingCart>
+                <div className="badge badge-secondary mt-1 mr-2">+0</div>
+              </div>
+              <div>
+                <button
+                  onClick={handleLogout}
+                  className="btn bg-white text-success"
+                >
+                  Logout
+                </button>
+              </div>
+            </div>
           )}
         </div>
       </div>
