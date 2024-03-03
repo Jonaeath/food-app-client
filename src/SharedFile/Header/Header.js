@@ -81,9 +81,9 @@ const Header = () => {
          
             <div className="flex">
               <div className="flex btn btn-ghost mr-1" onClick={()=> {setCartModalView(true)}}>
-                <h3 className="text-xl font-bold text-blue-500">Cart</h3>
+                <h3 className="text-xl font-bold text-red-500">Cart</h3>
                 <FaShoppingCart></FaShoppingCart>
-                <div className="badge badge-secondary">+{data.length}</div>
+                <div className="badge bg-yellow-200">+{data.length}</div>
               </div>
               {cartModalView ? <Modal onClose={()=> setCartModalView(false)}><Cart/> </Modal> : null}          
               <div>

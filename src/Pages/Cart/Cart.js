@@ -53,7 +53,7 @@ const Cart = () => {
           <h1 className="fs-2 text-center">Total Price: {totalPrice}/-</h1>
         </div>
         <div className="flex" style={{ alignItems: 'center', justifyContent: 'center' }}>
-          <button className="btn bg-success mt-5 ml-5" onClick={handleCheckOut}>
+          <button className="btn bg-green-400 mt-5 ml-5" onClick={handleCheckOut}>
             {" "}
             Check Out{" "}
           </button>
