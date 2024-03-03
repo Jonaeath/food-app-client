@@ -20,7 +20,7 @@ const Card = (props) => {
       id: foodDetail._id,
       name: foodDetail.name,
       img: foodDetail.img,
-      price: foodDetail.price,
+      price: finalPrice,
       qty: qty,
       size: size,
     });

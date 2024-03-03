@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import Modal from "../../Modal";
+import Cart from "../../Pages/Cart/Cart";
+import { useCart } from "../../Context/ContextReducer";
+
 
 const Header = () => {
+  
+  const data = useCart();
   const navigate = useNavigate();
+  const [cartModalView, setCartModalView] = useState(false)
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -12,7 +19,7 @@ const Header = () => {
   };
   // console.log("Token:", localStorage.getItem("token"));
 
-  const tabmenu = (
+  const tabMenu = (
     <>
       <li>
         <Link to="/">Home</Link>
@@ -52,13 +59,13 @@ const Header = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              {tabmenu}
+              {tabMenu}
             </ul>
           </div>
-          <div className="btn btn-ghost text-xl">daisyUI</div>
+          <div className="btn btn-ghost text-xl">Quantity Food</div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{tabmenu}</ul>
+          <ul className="menu menu-horizontal px-1">{tabMenu}</ul>
         </div>
         <div className="navbar-end">
           {!localStorage.getItem("token") ? (
@@ -71,12 +78,14 @@ const Header = () => {
               </Link>
             </div>
           ) : (
+         
             <div className="flex">
-              <div className="flex m-2">
-                <h3 className="mr-2 text-xl font-bold text-blue-500">Cart</h3>
-                <FaShoppingCart className="mt-2 mr-1"></FaShoppingCart>
-                <div className="badge badge-secondary mt-1 mr-2">+0</div>
+              <div className="flex btn btn-ghost mr-1" onClick={()=> {setCartModalView(true)}}>
+                <h3 className="text-xl font-bold text-blue-500">Cart</h3>
+                <FaShoppingCart></FaShoppingCart>
+                <div className="badge badge-secondary">+{data.length}</div>
               </div>
+              {cartModalView ? <Modal onClose={()=> setCartModalView(false)}><Cart/> </Modal> : null}          
               <div>
                 <button
                   onClick={handleLogout}

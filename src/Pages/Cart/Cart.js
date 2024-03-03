@@ -1,23 +1,25 @@
 import React from "react";
 import { useCart, useDispatchCart } from "../../Context/ContextReducer";
-// import Delete from "@material-ui/icons/Delete";
-const Cart = () => {
-  let data = useCart();
-  let dispatch = useDispatchCart();
-  // //   if (data.length === 0) {
-  // //     return (
-  // //       <div>
-  // //         <div className="m-5 w-100 text-center fs-3">The Cart is Empty!</div>
-  // //       </div>
-  // //     );
-  //   }
+import trash from '../../image/trash.png';
 
+const Cart = () => {
+  const data = useCart();
+  console.log(data)
+  const dispatch = useDispatchCart();
+    if (data.length === 0) {
+      return (
+        <div>
+          <div className="m-5 w-100 text-center fs-3">The Cart is Empty!</div>
+        </div>
+      );
+    }
+ 
   const handleCheckOut = () => {};
 
-  let totalPrice = data.reduce((total, food) => total + food.price, 0);
+  const totalPrice = data.reduce((total, food) => total + food.price, 0);
+  
   return (
     <div>
-      {console.log(data)}
       <div className="container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md">
         <table className="table table-hover ">
           <thead className=" text-success fs-4">
@@ -40,11 +42,7 @@ const Cart = () => {
                 <td>{food.price}</td>
                 <td>
                   <button type="button" className="btn p-0">
-                    {/* <Delete
-                      onClick={() => {
-                        dispatch({ type: "REMOVE", index: index });
-                      }}
-                    /> */}
+                    <img src={trash} alt="delete" className="h-6 w-8" onClick={()=> {dispatch({type:"REMOVE",index:index})}}  />
                   </button>{" "}
                 </td>
               </tr>
@@ -52,10 +50,10 @@ const Cart = () => {
           </tbody>
         </table>
         <div>
-          <h1 className="fs-2">Total Price: {totalPrice}/-</h1>
+          <h1 className="fs-2 text-center">Total Price: {totalPrice}/-</h1>
         </div>
-        <div>
-          <button className="btn bg-success mt-5 " onClick={handleCheckOut}>
+        <div className="flex" style={{ alignItems: 'center', justifyContent: 'center' }}>
+          <button className="btn bg-success mt-5 ml-5" onClick={handleCheckOut}>
             {" "}
             Check Out{" "}
           </button>

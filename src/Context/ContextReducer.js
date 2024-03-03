@@ -12,12 +12,16 @@ const reducer = (state, action) => {
         {
           id: action.id,
           name: action.name,
-          price: action.price,
           img: action.img,
+          price: action.price,
           size: action.size,
           qty: action.qty,
         },
       ];
+      case "REMOVE":
+            let newArr = [...state]
+            newArr.splice(action.index, 1)
+            return newArr;
 
     default:
       console.log("Enter in Reducer");
