@@ -14,7 +14,27 @@ const Cart = () => {
       );
     }
  
-  const handleCheckOut = () => {};
+    const handleCheckOut = async () => {
+      let email = localStorage.getItem("email");
+      // console.log(data,localStorage.getItem("email"),new Date())
+      let response = await fetch("http://localhost:4000/api/orderData", {
+        // credentials: 'include',
+        // Origin:"http://localhost:3000/login",
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          order_data: data,
+          email: email,
+          order_date: new Date().toDateString()
+        })
+      });
+      console.log("JSON RESPONSE:::::", response.status)
+      if (response.status === 200) {
+        dispatch({ type: "DROP" })
+      }
+    }
 
   const totalPrice = data.reduce((total, food) => total + food.price, 0);
   

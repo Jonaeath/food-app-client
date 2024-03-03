@@ -9,6 +9,8 @@ const Login = () => {
   });
 
   const [error, setError] = useState(null);
+  
+
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -25,6 +27,8 @@ const Login = () => {
       if (response.ok) {
         // If login successful, save token and navigate to home
         localStorage.setItem("token", data.token); // Save token in localStorage
+        localStorage.setItem('email', data.email);
+
         navigate("/"); // Redirect to home page
       } else {
         setError(data.error || "Login failed");
