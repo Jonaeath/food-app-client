@@ -3,6 +3,7 @@ import Header from "../../SharedFile/Header/Header";
 import Card from "../Card/Card";
 import Banner from "../Carousel/Banner";
 import food from "../../image/food.png";
+import Footer from "../../SharedFile/Footer/Footer";
 
 const Home = () => {
   const [foodData, setFoodData] = useState([]);
@@ -23,7 +24,7 @@ const Home = () => {
       <Header />
       <Banner
         img={food}
-        title="Best Food Waiting for your belly"
+        title="Eat Best Food From Best Place"
         sub="Save up to 50% on your first order"
         btn="Search"
         placeholder="Search"
@@ -63,6 +64,7 @@ const Home = () => {
           <div>Loading...</div>
         )}
       </div>
+      <Footer/>
     </div>
   );
 };

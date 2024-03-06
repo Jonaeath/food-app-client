@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate(); 
   const [createUser, setCreateUser] = useState({
     name: "",
     email: "",
@@ -26,6 +27,8 @@ const Signup = () => {
         // setError(json.message || "Signup failed");
         alert("Enter Valid Character");
       } else {
+        alert('SignUp Successfully, Please Login')
+        navigate('/login')
         // Signup successful, handle accordingly (redirect or show success message)
       }
     } catch (error) {

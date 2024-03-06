@@ -1,6 +1,7 @@
 import React from "react";
 import { useCart, useDispatchCart } from "../../Context/ContextReducer";
 import trash from '../../image/trash.png';
+import image from '../../image/nothing.jpg';
 
 const Cart = () => {
   const data = useCart();
@@ -9,7 +10,12 @@ const Cart = () => {
     if (data.length === 0) {
       return (
         <div>
-          <div className="m-5 w-100 text-center fs-3">The Cart is Empty!</div>
+          <div className="m-5 w-100 text-center text-2xl fs-3">The Cart is Empty!</div>
+          <img
+            src={image}
+            alt="Nothing"
+            className="h-screen w-screen"
+          />
         </div>
       );
     }
@@ -23,7 +29,7 @@ const Cart = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
-        },
+        }, 
         body: JSON.stringify({
           order_data: data,
           email: email,

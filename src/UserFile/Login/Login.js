@@ -8,9 +8,8 @@ const Login = () => {
     password: "",
   });
 
-  const [error, setError] = useState(null);
-  
-
+  const [error, setError] = useState(null); 
+  console.log(error);
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +27,7 @@ const Login = () => {
         // If login successful, save token and navigate to home
         localStorage.setItem("token", data.token); // Save token in localStorage
         localStorage.setItem('email', data.email);
-
+        alert('Login Successfully')
         navigate("/"); // Redirect to home page
       } else {
         setError(data.error || "Login failed");

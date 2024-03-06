@@ -4,6 +4,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import Modal from "../../Modal";
 import Cart from "../../Pages/Cart/Cart";
 import { useCart } from "../../Context/ContextReducer";
+import './Header.css';
 
 
 const Header = () => {
@@ -26,7 +27,7 @@ const Header = () => {
       </li>
       {localStorage.getItem("token") ? (
         <li>
-          <Link to="/myOrder">My Orders</Link>
+          <Link to="/myorder">My Orders</Link>
         </li>
       ) : (
         ""
@@ -36,7 +37,7 @@ const Header = () => {
 
   return (
     <div>
-      <div className="navbar bg-green-400">
+      <div className="navbar fixed z-20 bg-opacity-80 bg-green-400">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -57,23 +58,27 @@ const Header = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52" style={{ backgroundColor: 'green', "color":'white' }}
             >
               {tabMenu}
             </ul>
           </div>
-          <div className="btn btn-ghost text-xl">Quantity Food</div>
+          <div className="uppercase text-2xl text-orange-800 font-mono ...">
+            <h1 className="wave-animation">
+              <span className="text-blue-600 font-bold">Soft-Sequel</span> Food App
+              </h1>
+            </div>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-end hidden font-bold lg:flex">
           <ul className="menu menu-horizontal px-1">{tabMenu}</ul>
         </div>
         <div className="navbar-end">
           {!localStorage.getItem("token") ? (
             <div className="d-flex">
-              <Link className="btn bg-white text-success mx-1 " to="/login">
+              <Link className="btn bg-white text-success mx-1 font-bold" to="/login">
                 Login
               </Link>
-              <Link className="btn bg-white text-success mx-1" to="/createuser">
+              <Link className="btn bg-white text-success mx-1 font-bold" to="/createuser">
                 Signup
               </Link>
             </div>
@@ -89,7 +94,7 @@ const Header = () => {
               <div>
                 <button
                   onClick={handleLogout}
-                  className="btn bg-white text-success"
+                  className="btn bg-white text-success font-bold"
                 >
                   Logout
                 </button>

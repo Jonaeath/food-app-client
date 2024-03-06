@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./UserFile/Login/Login";
 import Signup from "./UserFile/Signup/Signup";
 import { CartProvider } from "./Context/ContextReducer";
+import MyOrder from "./Pages/MyOrder/MyOrder";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           {/* Sign Up Route for register */}
           <Route path="/createuser" element={<Signup />} />
+          <Route exact path="/myorder" element={<MyOrder/>} />
         </Routes>
       </Router>
     </CartProvider>
