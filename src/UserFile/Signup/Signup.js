@@ -14,7 +14,7 @@ const Signup = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:4000/api/createuser", {
+      const response = await fetch("https://food-app-server-taupe.vercel.app/api/createuser", {
         method: "POST",
         headers: {
           "content-type": "application/json",

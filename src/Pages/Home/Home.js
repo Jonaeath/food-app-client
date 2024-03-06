@@ -10,7 +10,7 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/foodCollection")
+    fetch("https://food-app-server-taupe.vercel.app/api/foodCollection")
       .then((res) => res.json())
       .then((data) => setFoodData(data));
   }, []);

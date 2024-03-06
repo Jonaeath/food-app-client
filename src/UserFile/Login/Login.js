@@ -14,7 +14,7 @@ const Login = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:4000/api/userlogin", {
+      const response = await fetch("https://food-app-server-taupe.vercel.app/api/userlogin", {
         method: "POST",
         headers: {
           "content-type": "application/json",

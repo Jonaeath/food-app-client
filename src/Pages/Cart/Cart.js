@@ -23,7 +23,7 @@ const Cart = () => {
     const handleCheckOut = async () => {
       let email = localStorage.getItem("email");
       // console.log(data,localStorage.getItem("email"),new Date())
-      let response = await fetch("http://localhost:4000/api/orderData", {
+      let response = await fetch("https://food-app-server-taupe.vercel.app/api/orderData", {
         // credentials: 'include',
         // Origin:"http://localhost:3000/login",
         method: 'POST',
